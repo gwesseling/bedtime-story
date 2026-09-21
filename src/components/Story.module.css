@@ -14,15 +14,18 @@
 .textWrap {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   flex: 0 0 auto;
+  width: 100%;
   gap: 24px;
-  text-align: center;
+  text-align: left;
 }
 
 .imageWrap {
   width: 100%;
   flex: 0 0 auto;
+  opacity: 0;
+  transition: opacity 1100ms ease;
 }
 
 .imageWrap img {
@@ -31,21 +34,17 @@
   height: auto;
 }
 
-.title {
-  font-family: var(--font-serif);
-  font-weight: 500;
-  font-style: italic;
-  font-size: clamp(1rem, 2.5vw + 0.6rem, 2rem);
-  line-height: 1.2;
-  margin: 0;
-  color: #000;
+.container[data-phase="image"] .imageWrap,
+.container[data-phase="words"] .imageWrap,
+.container[data-phase="hold"] .imageWrap {
+  opacity: 1;
 }
 
-.title::first-letter {
-  font-weight: 800;
-  font-size: 2.4em;
+.container[data-phase="fadeOut"] .imageWrap {
+  transition-duration: 500ms;
 }
 
+.title,
 .text {
   font-family: var(--font-serif);
   font-weight: 500;
@@ -54,4 +53,33 @@
   line-height: 1.2;
   margin: 0;
   color: #000;
+}
+
+.wordGroup {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.letter {
+  display: inline-block;
+  opacity: 0;
+  transition: opacity 760ms ease;
+  transition-delay: var(--letter-delay, 0ms);
+}
+
+.container[data-phase="words"] .letter,
+.container[data-phase="hold"] .letter {
+  opacity: 1;
+}
+
+.container[data-phase="fadeOut"] .letter {
+  transition-delay: 0ms;
+  transition-duration: 500ms;
+}
+
+.dropCap {
+  font-weight: 800;
+  font-size: 2.4em;
+  line-height: 1;
+  vertical-align: -0.1em;
 }
