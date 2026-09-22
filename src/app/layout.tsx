@@ -21,9 +21,9 @@ const itim = Itim({
 });
 
 export const metadata: Metadata = {
-  title: "Every Night, More",
+  title: "A bed time story",
   description:
-    "An animated bedtime scroll story inspired by Guess How Much I Love You, with room for a voice of your own.",
+    "based on Guess How Much I Love You",
 };
 
 export const viewport: Viewport = {
